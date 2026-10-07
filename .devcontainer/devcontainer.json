@@ -1,0 +1,32 @@
+{
+    "name": "Wordle Language Learning",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        // Installs and starts a Docker daemon inside the dev container.
+        "ghcr.io/devcontainers/features/docker-in-docker:4.1.2": {},
+        "ghcr.io/devcontainers/features/github-cli:1.1.3": {},
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/devcontainers-extra/features/markdownlint-cli2": {}
+    },
+    "postCreateCommand": "chmod +x ./.devcontainer/post_create.sh && ./.devcontainer/post_create.sh",
+    "postStartCommand": "docker info",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "github.copilot", // GitHub Copilot
+                "github.copilot-chat",
+                "ms-python.python", // Python extension
+                "ms-python.debugpy", // Debugpy extension for Python
+                "charliermarsh.ruff" // linter
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "runArgs": [
+        "--privileged"
+    ],
+    "remoteUser": "vscode"
+}
